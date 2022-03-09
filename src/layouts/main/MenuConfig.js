@@ -1,0 +1,35 @@
+import { Icon } from '@iconify/react';
+import homeFill from '@iconify/icons-eva/home-fill';
+
+// ----------------------------------------------------------------------
+
+const ICON_SIZE = {
+  width: 22,
+  height: 22
+};
+
+const menuConfig = [
+  {
+    title: 'Home',
+    path: '/',
+    icon: <Icon icon={homeFill} {...ICON_SIZE} />
+  },
+  {
+    title: 'Explore',
+    path: '/#',
+    icon: <Icon icon={homeFill} {...ICON_SIZE} />
+  },
+  {
+    title: 'Activity',
+    path: '/#',
+    icon: <Icon icon={homeFill} {...ICON_SIZE} />
+  },
+  {
+    title: 'Contact',
+    path: '/#',
+    icon: <Icon icon={homeFill} {...ICON_SIZE} />
+  }
+  // { title: 'Dashboard', path: PATH_DASHBOARD.root, icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
+];
+
+export default menuConfig;

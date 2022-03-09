@@ -1,0 +1,30 @@
+.video-player-wrapper {
+    width: 100% !important
+}
+
+.video-player-wrapper .video-controls {
+    display: none !important
+}
+
+.footer_link a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.roadmap_index {
+    margin-right: 20px;
+    color: #d02561;
+    font-size: 20px!important;
+}
+
+.vertical-timeline-element-icon {
+    color: #d02561!important;
+}
+
+.vertical-timeline-element-content-arrow {
+    display: none;
+}
+
+.vertical-timeline-element-content  {
+    background: #04091a!important;
+}

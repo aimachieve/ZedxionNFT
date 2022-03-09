@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'CircularStd';
+  font-weight: 400;
+  font-style: normal;
+  src: local('CircularStd'), url('CircularStd-Book.otf') format('opentype');
+}
+@font-face {
+  font-family: 'CircularStd';
+  font-weight: 500;
+  font-style: normal;
+  src: local('CircularStd'), url('CircularStd-Medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'CircularStd';
+  font-weight: 700;
+  font-style: normal;
+  src: local('CircularStd'), url('CircularStd-Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  src: local('Arvo'), url('Arvo-Regular.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'ArvoBold';
+  font-style: normal;
+  src: local('ArvoBold'), url('Arvo-Bold.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'ArvoItalic';
+  font-style: normal;
+  src: local('ArvoBold'), url('Arvo-Italic.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'Lakki';
+  font-style: normal;
+  src: local('LakkiReddy'), url('LakkiReddy-Regular.ttf') format('opentype');
+}

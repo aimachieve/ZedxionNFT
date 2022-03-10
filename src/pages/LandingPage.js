@@ -6,12 +6,12 @@ import Page from '../components/Page';
 // import {connectWallet } from "../../src/utils/interact"
 import {
   LandingSlider,
-  LandingMintNFT,
-  LandingRoadmap,
-  LandingEquipment,
-  LandingTeam,
-  LandingGiveaways,
-  LandingDamage
+  // LandingMintNFT,
+  // LandingRoadmap,
+  // LandingEquipment,
+  // LandingTeam,
+  // LandingGiveaways,
+  // LandingDamage
 } from '../components/_external-pages/landing';
 
 // ----------------------------------------------------------------------

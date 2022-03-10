@@ -128,7 +128,7 @@ CarouselItem.propTypes = {
 };
 
 function CarouselItem({ item }) {
-  const { image, title } = item;
+  const { image } = item;
 
   return (
     <Box

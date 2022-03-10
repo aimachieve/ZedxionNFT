@@ -11,8 +11,8 @@ import { styled } from '@material-ui/core/styles';
 import { Grid, Link, Divider, Container, Typography, Stack, TextField, Button } from '@material-ui/core';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
+// import Input from '@mui/material/Input';
+// import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 //
@@ -73,7 +73,7 @@ export default function MainFooter() {
         >
           <Grid container item xs={12} md={12} spacing={3}>
             <Grid item xs={6} md={3} justifyContent="space-between">
-              <img src='/assets/home/footer-logo.png' alt='footer-logo' />
+              <img src='/assets/home/logo.png' style={{width: '115px', height: '100px'}} alt='footer-logo' />
               <Typography
                 variant="overline"
                 color="#adb5bd"

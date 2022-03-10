@@ -72,9 +72,9 @@ export default function MainNavbar() {
         >
           <MHidden width="mdDown">
             <RouterLink to="/">
-              <Box component="img" src="/assets/home/light-logo.png" sx={{
-                width: "185px",
-                height: "39px",
+              <Box component="img" src="/assets/home/logo.png" sx={{
+                width: "115px",
+                height: "100px",
                 // marginLeft: "100px",
                 // marginBottom: "25px"
               }} />

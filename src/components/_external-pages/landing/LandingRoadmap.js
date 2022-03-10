@@ -37,7 +37,7 @@ export default function LandingRoadmap() {
               }}>UTILITY OF NFTS</Typography>
               <Typography sx={{
                 fontFamily: 'Arvo',
-                marginBottom: '20px'
+                marginBottom: '20px' 
               }}>
                 The highlight of this drop is the Chiefsquare community to be built with 20% of the sales.
               </Typography>

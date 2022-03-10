@@ -84,13 +84,13 @@ export default function LandingMintNFT() {
       let totalCostWei = String(cost * amount);
       let totalGasLimit = String(gasLimit * amount);
 
-      const _222BlackFaceContract = await getContract()
-      console.log("_222BlackFaceContract=>", _222BlackFaceContract)
+      const Zedxion = await getContract()
+      console.log("Zedxion=>", Zedxion)
       
       setClaimingNft(true);
       setStatus("NFT(s) minting now...");
 
-      _222BlackFaceContract.methods
+      Zedxion.methods
         .mint(walletAddress, amount)
         .send({
           gasLimit: String(totalGasLimit),

@@ -6,11 +6,11 @@ import Page from '../components/Page';
 // import {connectWallet } from "../../src/utils/interact"
 import {
   LandingSlider,
-  // LandingMintNFT,
-  // LandingRoadmap,
-  // LandingEquipment,
+  LandingBestCS,
+  LandingAuction,
+  LandingBlogs1,
+  LandingBlogs2,
   // LandingTeam,
-  // LandingGiveaways,
   // LandingDamage
 } from '../components/_external-pages/landing';
 
@@ -43,16 +43,16 @@ export default function LandingPage() {
       <ContentStyle>
         {/* Title */}
         <LandingSlider />
-        {/* Mint NFT section */}
-        {/* <LandingMintNFT /> */}
-        {/* Giveaways */}
-        {/* <LandingGiveaways /> */}
-        {/* Utility */}
-        {/* <LandingRoadmap /> */}
+        {/* Best Creators & Sellers */}
+        <LandingBestCS />
+        {/* Live Auction */}
+        <LandingAuction />
+        {/* Latest Blogs 1/> */}
+        <LandingBlogs1 />
+        {/* Latest Blogs 2 */}
+        <LandingBlogs2 />
         {/* Uzoma Dunkwu */}
         {/* <LandingTeam /> */}
-        {/* Chief Square /> */}
-        {/* <LandingEquipment /> */}
         {/* FAQ */}
         {/* <LandingDamage /> */}
       </ContentStyle>

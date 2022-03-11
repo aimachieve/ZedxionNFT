@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 // import arrowForwardFill from '@iconify/icons-eva/arrow-forward-fill';
 // material
 import { styled } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { Stack, Button, Box } from '@mui/material';
+import GavelIcon from '@mui/icons-material/Gavel';
 // utils
 // import mockData from '../../utils/mock-data';
 //
@@ -144,22 +145,37 @@ function CarouselItem({ item }) {
         boxShadow: '0px 4px 31px rgba(0, 0, 0, 0.11)',
         position: 'relative',
         mt: 3,
-        mb: 1
+        mb: 1,
+        position: 'relative',
+        overflow: 'hidden',
+        '&:hover': { 
+          '& .overlay': { transform: 'translateY(0%)' } 
+        }
       }}
     >
-      {/*<CardContent
+      <Stack
+        className="overlay"
+        alignItems="center"
+        justifyContent="center"
+        spacing={3}
         sx={{
-          bottom: 0,
-          zIndex: 9,
-          width: '100%',
-          textAlign: 'left',
-          position: 'absolute'
+          background: 'rgba(0, 0, 0, 0.7)',
+          position: 'absolute',
+          width: 1,
+          height: 1,
+          transform: 'translateY(-100%)',
+          transition: 'transform 0.3s'
         }}
       >
-        <Typography paragraph sx={{fontFamily: 'PoppinsBold', color: "#173858", fontSize: 30}}>
-          {title}
-        </Typography>
-      </CardContent>*/}
+          <Button
+            sx={{ width: 100, borderRadius: "20px" }}
+            color="primary"
+            variant="contained"
+            startIcon={<GavelIcon />}
+          >
+            Bid
+          </Button>
+      </Stack>
     </Box>
   );
 }
@@ -169,14 +185,7 @@ export default function CarouselCenterMode() {
   // const theme = useTheme();
 
   const settings = {
-    // slidesToShow: 5,
-    // arrows: false,
-    // // centerMode: true,
-    // infinite: true,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
     centerPadding: '60px',
-    // adaptiveHeight: true,
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,

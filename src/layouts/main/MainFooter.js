@@ -8,15 +8,17 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import { styled } from '@material-ui/core/styles';
-import { Grid, Link, Divider, Container, Typography, Stack, TextField, Button } from '@material-ui/core';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Grid, Link, Divider, Container, Typography, Stack, TextField, Button, IconButton } from '@material-ui/core';
 
-// import Input from '@mui/material/Input';
-// import InputLabel from '@mui/material/InputLabel';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import InputAdornment from '@mui/material/InputAdornment';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
-//
-// import SvgIconStyle from 'components/SvgIconStyle';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 // ----------------------------------------------------------------------
 
 // const SOCIALS = [
@@ -64,16 +66,68 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function MainFooter() {
   return (
     <RootStyle>
-      <Divider />
-      <Container maxWidth="lg" sx={{ py: 10 }}>
+      <Container maxWidth="lg" sx={{ py: 5 }}>
+        <Stack direction="row" justifyContent={'space-between'} mb={3}>
+          <Stack spacing={3}>
+            <Typography sx={{ fontSize: '22px' }}>Download the Superex app to explore any NFTs</Typography>
+            <Stack direction="row" spacing={3}>
+              <img src="https://shreethemes.in/superex/layouts/images/app.png" height="40" alt="" />
+              <img src="https://shreethemes.in/superex/layouts/images/app.png" height="40" alt="" />
+            </Stack>
+          </Stack>
+          <Stack spacing={3}>
+            <Typography sx={{ fontSize: '22px' }}>Join Superex community</Typography>
+            <Stack direction="row" spacing={3}>
+              <IconButton aria-label="delete" size="small" sx={{
+                border: '1px solid', 
+                '&:hover': { background: "#1066e7" }
+              }}>
+                <FacebookIcon fontSize='small'  color="white" />
+              </IconButton>
+              <IconButton aria-label="delete" size="small" sx={{
+                border: '1px solid', 
+                '&:hover': { background: "#1066e7" }
+              }}>
+                <InstagramIcon fontSize='small'  color="white" />
+              </IconButton>
+              <IconButton aria-label="delete" size="small" sx={{
+                border: '1px solid', 
+                '&:hover': { background: "#1066e7" }
+              }}>
+                <LinkedInIcon fontSize='small'  color="white" />
+              </IconButton>
+              <IconButton aria-label="delete" size="small" sx={{
+                border: '1px solid', 
+                '&:hover': { background: "#1066e7" }
+              }}>
+                <TwitterIcon fontSize='small'  color="white" />
+              </IconButton>
+              <IconButton aria-label="delete" size="small" sx={{
+                border: '1px solid', 
+                '&:hover': { background: "#1066e7" }
+              }}>
+                <TelegramIcon fontSize='small'  color="white" />
+              </IconButton>
+              <IconButton aria-label="delete" size="small" sx={{
+                border: '1px solid', 
+                '&:hover': { background: "#1066e7" }
+              }}>
+                <WhatsAppIcon fontSize='small'  color="white" />
+              </IconButton>
+            </Stack>
+          </Stack>
+        </Stack>
+
+        <Divider />
+        
         <Grid
           container
           justifyContent={{ xs: 'center', md: 'space-between' }}
-          sx={{ textAlign: { xs: 'center', md: 'left' } }}
+          sx={{ textAlign: { xs: 'center', md: 'left' }, mt: 4 }}
         >
           <Grid container item xs={12} md={12} spacing={3}>
             <Grid item xs={6} md={3} justifyContent="space-between">
-              <img src='/assets/home/logo.png' style={{width: '115px', height: '100px'}} alt='footer-logo' />
+              <img src='/assets/home/logo.png' style={{ width: '115px', height: '100px' }} alt='footer-logo' />
               <Typography
                 variant="overline"
                 color="#adb5bd"
@@ -123,52 +177,52 @@ export default function MainFooter() {
             })}
             <Grid item xs={6} md={3} justifyContent="space-between">
               <Stack spacing={3} >
-              <Typography
-                variant="overline"
-                color="#adb5bd"
-                sx={{ fontFamily: 'Poppins', fontSize: 20, lineHeight: '30px', fontWeight: 600 }}
-              >
-                Newsletter
-              </Typography>
-              <Typography
-                variant="overline"
-                color="#adb5bd"
-                sx={{
-                  display: 'block',
-                  fontWeight: 300,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  mt: 2,
-                }}
-              >
-                Sign up and receive the latest tips via email.
-              </Typography>
-              <Typography
-                variant="overline"
-                color="#adb5bd"
-                sx={{
-                  display: 'block',
-                  fontWeight: 300,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
-                  mt: 2,
-                }}
-              >
-                Write your email <span style={{ color: 'red' }}>*</span>
-              </Typography>
-              <TextField
-                id="input-with-icon-textfield"
-                placeholder='Your email : '
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <MailOutlineIcon />
-                    </InputAdornment>
-                  )
-                }}
-              />
-              <Button variant="contained" fullWidth>Subscribe</Button>
+                <Typography
+                  variant="overline"
+                  color="#adb5bd"
+                  sx={{ fontFamily: 'Poppins', fontSize: 20, lineHeight: '30px', fontWeight: 600 }}
+                >
+                  Newsletter
+                </Typography>
+                <Typography
+                  variant="overline"
+                  color="#adb5bd"
+                  sx={{
+                    display: 'block',
+                    fontWeight: 300,
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    mt: 2,
+                  }}
+                >
+                  Sign up and receive the latest tips via email.
+                </Typography>
+                <Typography
+                  variant="overline"
+                  color="#adb5bd"
+                  sx={{
+                    display: 'block',
+                    fontWeight: 300,
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    mt: 2,
+                  }}
+                >
+                  Write your email <span style={{ color: 'red' }}>*</span>
+                </Typography>
+                <TextField
+                  id="input-with-icon-textfield"
+                  placeholder='Your email : '
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <MailOutlineIcon />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+                <Button variant="contained" fullWidth>Subscribe</Button>
               </Stack>
             </Grid>
           </Grid>

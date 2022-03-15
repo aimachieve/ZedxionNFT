@@ -2,7 +2,7 @@
 import { styled } from '@material-ui/core/styles';
 import { Container, Typography, Stack, Grid, Fab } from '@material-ui/core';
 //
-import { varFadeInUp, MotionInView } from '../../animate';
+import { varFadeInUp, MotionInView } from '../../components/animate/index';
 // 
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -20,14 +20,13 @@ const RootStyle = styled('div')(({ theme }) => ({
 const ContentStyle = styled('div')(({ theme }) => ({
   width: '100%',
   marginTop: theme.spacing(10),
-  marginBottom: theme.spacing(10),
   [theme.breakpoints.up('md')]: {
     textAlign: 'left',
   }
 }));
 // ----------------------------------------------------------------------
 
-export default function LandingAuction() {
+export default function RelatedItems() {
   return (
     <RootStyle>
       <Container maxWidth="lg">
@@ -36,7 +35,7 @@ export default function LandingAuction() {
             <Stack justifyContent={'center'} alignItems={'center'} spacing={3}>
               <Typography sx={{
                 fontSize: '40px',
-              }}>Latest Blogs</Typography>
+              }}>Related Auction Items</Typography>
               <Typography sx={{
                 color: "#b9c6d8",
                 textAlign: 'center'
@@ -63,7 +62,7 @@ export default function LandingAuction() {
                     component="img"
                     alt="green iguana"
                     height="auto"
-                    image="https://shreethemes.in/superex/layouts/images/items/3.jpg"
+                    image="https://shreethemes.in/superex/layouts/images/items/5.jpg"
                     sx={{ borderRadius: "10px" }}
                   />
                   <Typography gutterBottom variant="h5" component="div" mt={3}>

@@ -103,9 +103,8 @@ export default function Router() {
       element: <MainLayout />,
       children: [
         { path: '/', element: <LandingPage /> },
+        { path: '/bid/:id', element: <BidPage /> },
         { path: '/nfts/all', element: <NFTsPage /> },
-        // { path: '/nft', element: <NFTPage /> },
-        { path: '/:id', element: <NFTPage /> }
       ]
     },
     { path: '*', element: <Navigate to="/404" replace /> }
@@ -123,5 +122,5 @@ const VerifyCode = Loadable(lazy(() => import('../pages/authentication/VerifyCod
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 // Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
+const BidPage = Loadable(lazy(() => import('../pages/Bid/index.js')));
 const NFTsPage = Loadable(lazy(() => import('../pages/NFTsPage')));
-const NFTPage = Loadable(lazy(() => import('../pages/NFTPage')));

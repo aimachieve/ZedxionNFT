@@ -6,4 +6,3 @@ export { default as LandingBlogs2} from './LandingBlogs2';
 export { default as LandingBlogs1 } from './LandingBlogs1';
 export { default as LandingDamage } from './LandingDamage';
 export { default as LandingNFTs } from './LandingNFTs';
-export { default as LandingNFT } from './LandingNFT';

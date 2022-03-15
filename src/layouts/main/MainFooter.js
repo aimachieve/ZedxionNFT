@@ -30,7 +30,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const LINKS = [
   {
-    headline: 'Superex',
+    headline: 'Zedxion',
     children: [
       { name: 'Explore', href: '#' },
       { name: 'Live Auction', href: '#' },
@@ -69,14 +69,14 @@ export default function MainFooter() {
       <Container maxWidth="lg" sx={{ py: 5 }}>
         <Stack direction="row" justifyContent={'space-between'} mb={3}>
           <Stack spacing={3}>
-            <Typography sx={{ fontSize: '22px' }}>Download the Superex app to explore any NFTs</Typography>
+            <Typography sx={{ fontSize: '22px' }}>Download the Zedxion app to explore any NFTs</Typography>
             <Stack direction="row" spacing={3}>
               <img src="https://shreethemes.in/superex/layouts/images/app.png" height="40" alt="" />
               <img src="https://shreethemes.in/superex/layouts/images/app.png" height="40" alt="" />
             </Stack>
           </Stack>
           <Stack spacing={3}>
-            <Typography sx={{ fontSize: '22px' }}>Join Superex community</Typography>
+            <Typography sx={{ fontSize: '22px' }}>Join Zedxion community</Typography>
             <Stack direction="row" spacing={3}>
               <IconButton aria-label="delete" size="small" sx={{
                 border: '1px solid', 
@@ -165,6 +165,7 @@ export default function MainFooter() {
                           fontWeight: 300,
                           fontSize: 16,
                           fontFamily: 'Poppins',
+                          textAlign: 'left'
                         }}
                       >
                         <ChevronRightIcon />
@@ -242,7 +243,7 @@ export default function MainFooter() {
           fontFamily: 'Poppins'
         }}
       >
-        © 2022 Zedxioncryptocurrency. Design & Building by David Martin.
+        © 2022 Zedxioncryptocurrency. Design & Building by Victor Esan.
       </Typography>
     </RootStyle>
   );

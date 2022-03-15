@@ -26,7 +26,7 @@ export default function LabTabs() {
         </Box>
         <TabPanel value="1">
           <Typography sx={{ color: "#b9c6d8", mt: 2 }}>
-            Hey guys! New exploration about NFT Marketplace Web Design, this time I'm inspired by one of my favorite NFT website called Superex (with crypto payment)! What do you think?
+            Hey guys! New exploration about NFT Marketplace Web Design, this time I'm inspired by one of my favorite NFT website called Zedxion (with crypto payment)! What do you think?
             <br />
             <br />
             What does it mean? Biomechanics is the study of the structure, function and motion of the mechanical aspects of biological systems, at any level from whole organisms to organs, cells and cell organelles, using the methods of mechanics. Biomechanics is a branch of biophysics.

@@ -40,7 +40,7 @@ export default function RelatedItems() {
                 color: "#b9c6d8",
                 textAlign: 'center'
               }}>
-                We are a huge marketplace dedicated to connecting great artists of all Superex <br /> with their fans and unique token collectors!
+                We are a huge marketplace dedicated to connecting great artists of all Zedxion <br /> with their fans and unique token collectors!
               </Typography>
             </Stack>
           </MotionInView>

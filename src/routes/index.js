@@ -104,6 +104,16 @@ export default function Router() {
       children: [
         { path: '/', element: <LandingPage /> },
         { path: '/bid/:id', element: <BidPage /> },
+        { path: '/contact', element: <Contact /> },
+        { path: '/aboutus', element: <AboutUs /> },
+        { path: '/blog', element: <Blog /> },
+        { path: '/terms', element: <Terms /> },
+        { path: '/privacy', element: <Privacy /> },
+        // ZEDZION FOOTER
+        { path: '/explore', element: <Explore /> },
+        { path: '/auction', element: <Auction /> },
+        { path: '/activity', element: <Activity /> },
+        { path: '/creators', element: <Creators /> },
         { path: '/nfts/all', element: <NFTsPage /> },
       ]
     },
@@ -123,4 +133,16 @@ const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 // Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const BidPage = Loadable(lazy(() => import('../pages/Bid/index.js')));
+// Footer Community
+const Contact = Loadable(lazy(() => import('../pages/Contact/index.js')));
+const AboutUs = Loadable(lazy(() => import('../pages/AboutUs/index.js')));
+const Blog = Loadable(lazy(() => import('../pages/Blog/index.js')));
+const Terms = Loadable(lazy(() => import('../pages/Terms/index.js')));
+const Privacy = Loadable(lazy(() => import('../pages/Privacy/index.js')));
+// Footer Zedxion
+const Explore = Loadable(lazy(() => import('../pages/Explore/index.js')));
+const Auction = Loadable(lazy(() => import('../pages/Auction/index.js')));
+const Activity = Loadable(lazy(() => import('../pages/Activity/index.js')));
+const Creators = Loadable(lazy(() => import('../pages/Creators/index.js')));
+
 const NFTsPage = Loadable(lazy(() => import('../pages/NFTsPage')));

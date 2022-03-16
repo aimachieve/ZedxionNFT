@@ -46,7 +46,8 @@ export default function LandingBlogs2() {
                 fontSize: '40px',
               }}>Latest Blogs</Typography>
               <Typography sx={{
-                color: "#b9c6d8"
+                color: "#b9c6d8",
+                textAlign: 'center'
               }}>
                 We are a huge marketplace dedicated to connecting great artists of all Zedxion <br /> with their fans and unique token collectors!
               </Typography>

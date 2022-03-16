@@ -271,7 +271,7 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }) {
           isHome={isHome}
         />
       ))}
-      <SearchIcon sx={{ mr: 2, color: 'white', }} />
+      <SearchIcon sx={{ mr: 2, color: 'white', cursor: 'pointer' }} />
       {
         walletAddress.length > 0 ? (
           <Fab color="primary" aria-label="add" sx={{ width: 'auto', height: '47px', mr: 2, p: 2 }} onClick={connectWallet}>

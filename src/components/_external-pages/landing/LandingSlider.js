@@ -2,17 +2,10 @@ import { useRef } from 'react';
 import Slider from 'react-slick';
 import React from "react"
 import PropTypes from 'prop-types';
-// import { Icon } from '@iconify/react';
-// import { Link as RouterLink } from 'react-router-dom';
-// import arrowForwardFill from '@iconify/icons-eva/arrow-forward-fill';
 // material
 import { styled } from '@material-ui/core/styles';
 import { Stack, Button, Box } from '@mui/material';
 import GavelIcon from '@mui/icons-material/Gavel';
-// utils
-// import mockData from '../../utils/mock-data';
-//
-
 // ----------------------------------------------------------------------
 
 const MOCK_CAROUSELS = [
@@ -203,7 +196,6 @@ function CarouselItem({ item }) {
 
 export default function CarouselCenterMode() {
   const carouselRef = useRef();
-  // const theme = useTheme();
 
   const settings = {
     centerPadding: '60px',

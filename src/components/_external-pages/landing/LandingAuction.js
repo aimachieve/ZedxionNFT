@@ -36,7 +36,7 @@ export default function LandingAuction() {
             <Stack justifyContent={'center'} alignItems={'center'} spacing={3}>
               <Typography sx={{
                 fontSize: '40px',
-              }}>Latest Blogs</Typography>
+              }}>Live Auctions</Typography>
               <Typography sx={{
                 color: "#b9c6d8",
                 textAlign: 'center'

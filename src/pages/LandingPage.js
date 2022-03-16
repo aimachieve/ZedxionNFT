@@ -10,8 +10,6 @@ import {
   LandingAuction,
   LandingBlogs1,
   LandingBlogs2,
-  // LandingTeam,
-  // LandingDamage
 } from '../components/_external-pages/landing';
 
 // ----------------------------------------------------------------------
@@ -29,14 +27,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LandingPage() {
-  // const [walletAddress, setWalletAddress] = useState("");
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // useEffect(async () => {
-  //   const result = await connectWallet();
-  //   setWalletAddress(result.address);
-  //   console.log("landingpage->useEffect",result.address);
-  //  }, []);
-
   return (
     <RootStyle title="Zedxioncryptocurrency" id="move_top">
       {/* <LandingHero /> */}
@@ -51,10 +41,6 @@ export default function LandingPage() {
         <LandingBlogs1 />
         {/* Latest Blogs 2 */}
         <LandingBlogs2 />
-        {/* Uzoma Dunkwu */}
-        {/* <LandingTeam /> */}
-        {/* FAQ */}
-        {/* <LandingDamage /> */}
       </ContentStyle>
     </RootStyle>
   );

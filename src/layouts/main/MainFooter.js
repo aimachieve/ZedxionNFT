@@ -32,23 +32,22 @@ const LINKS = [
   {
     headline: 'Zedxion',
     children: [
-      { name: 'Explore', href: '#' },
-      { name: 'Live Auction', href: '#' },
-      { name: 'Activites', href: '#' },
-      { name: 'Wallet', href: '#' },
-      { name: 'Creators', href: '#' },
+      { name: 'Explore', href: '/explore' },
+      { name: 'Live Auction', href: '/auction' },
+      { name: 'Activites', href: '/activity' },
+      { name: 'Creators', href: '/creators' },
     ]
   },
   {
     headline: 'Community',
     children: [
-      { name: 'About Us', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'Terms & Conditions', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Login', href: '#' },
-      { name: 'Subscribe', href: '#' },
-      { name: 'Contact', href: '#' }
+      { name: 'About Us', href: '/aboutus' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Terms & Conditions', href: '/terms' },
+      { name: 'Privacy Policy', href: '/privacy' },
+      // { name: 'Login', href: '#' },
+      // { name: 'Subscribe', href: 'mailto:contact@example.com' },
+      { name: 'Contact', href: '/contact' }
     ]
   }
 ];

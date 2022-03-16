@@ -7,7 +7,7 @@ var Web3 = require("web3");
 
 // const web3 = createAlchemyWeb3("https://eth-rinkeby.alchemyapi.io/v2/ltxESp_ON7Y9IzajiJvXptVK0P3dNMrS");
 // const web3 = new Web3(new Web3.providers.HttpProvider( "https://rinkeby.infura.io/v3/aba36d08da514e4897c41d9063574996"));
-const contractABI = require("./_222BlackFaceContract.json");
+const contractABI = require("./zedxionContract.json");
 const contractAddress = "0x9787e5ca192ae9BE424F2C25527f5A8e898B3Ca0";
 
 export const getWeb3 = async () => {
@@ -23,18 +23,18 @@ export const getContract = async () => {
 }
 
 export const getTotalSupply = async () => {
-  const _222BlackFaceContract = await getContract()
-  var totalSupply = await _222BlackFaceContract.methods.totalSupply().call();
+  const zedxionContract = await getContract()
+  var totalSupply = await zedxionContract.methods.totalSupply().call();
   return totalSupply;
 };
 
 // export const loadTotalMintCount = async () => {
-//   var message = await _222BlackFaceContract.methods.totalMint().call();
+//   var message = await zedxionContract.methods.totalMint().call();
 //   return message;
 // };
 
 // export const getCurrentMessage = async () => {
-//   var message = await _222BlackFaceContract.methods.message().call();
+//   var message = await zedxionContract.methods.message().call();
 //   return message;
 // };
 
@@ -59,7 +59,7 @@ export const connectWallet = async () => {
         // Do any other work!
       }
     }
-    
+
     try {
       const addressArray = await window.ethereum.request({
         method: "eth_requestAccounts"
@@ -162,7 +162,7 @@ export const getCurrentWalletConnected = async () => {
 //   const transactionParameters = {
 //     to: contractAddress, // Required except during contract publications.
 //     from: address, // must match user's active address.
-//     data: _222BlackFaceContract.methods.update(message).encodeABI()
+//     data: zedxionContract.methods.update(message).encodeABI()
 //   };
 
 //   //sign the transaction
@@ -213,7 +213,7 @@ export const getCurrentWalletConnected = async () => {
 
 //   let e;
 //   try {
-//     e = await _222BlackFaceContract.methods.mint(address, mintCount).estimateGas({
+//     e = await zedxionContract.methods.mint(address, mintCount).estimateGas({
 //       // value: correctPrice * mintCount,
 //       value: web3.utils.toHex(correctPrice * mintCount),
 //       from: address
@@ -234,7 +234,7 @@ export const getCurrentWalletConnected = async () => {
 //     value: web3.utils.toHex(correctPrice * mintCount),
 //     // gasLimit: 21000,
 //     // gas: web3.utils.toHex(21000),
-//     data: _222BlackFaceContract.methods.mint(address, mintCount).encodeABI()
+//     data: zedxionContract.methods.mint(address, mintCount).encodeABI()
 //   };
 //   // console.log(transactionParameters.value);
 //   try {
@@ -281,7 +281,7 @@ export const getCurrentWalletConnected = async () => {
 //   const transactionParameters = {
 //     to: contractAddress, // Required except during contract publications.
 //     from: address, // must match user's active address.
-//     data: _222BlackFaceContract.methods.reserve(mintCount).encodeABI()
+//     data: zedxionContract.methods.reserve(mintCount).encodeABI()
 //   };
 
 //   try {
@@ -326,7 +326,7 @@ export const getCurrentWalletConnected = async () => {
 //   const transactionParameters = {
 //     to: contractAddress, // Required except during contract publications.
 //     from: address, // must match user's active address.
-//     data: _222BlackFaceContract.methods.pause(flag).encodeABI()
+//     data: zedxionContract.methods.pause(flag).encodeABI()
 //   };
 
 //   try {
@@ -372,7 +372,7 @@ export const getCurrentWalletConnected = async () => {
 //   const transactionParameters = {
 //     to: contractAddress, // Required except during contract publications.
 //     from: address, // must match user's active address.
-//     data: _222BlackFaceContract.methods.pause(value).encodeABI()
+//     data: zedxionContract.methods.pause(value).encodeABI()
 //   };
 
 //   //sign the transaction
@@ -405,7 +405,7 @@ export const getCurrentWalletConnected = async () => {
 //   const transactionParameters = {
 //     to: contractAddress, // Required except during contract publications.
 //     from: address, // must match user's active address.
-//     data: _222BlackFaceContract.methods.mint(address, mintCount).encodeABI()
+//     data: zedxionContract.methods.mint(address, mintCount).encodeABI()
 //   };
 
 //   //sign the transaction

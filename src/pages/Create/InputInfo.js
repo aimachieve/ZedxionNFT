@@ -65,6 +65,7 @@ export default function InputInfo() {
                 Mint your NFT!
               </Typography>
               <TextField
+                inputProps={{ sx: { color: 'white' } }}
                 id="outlined-select-network"
                 select
                 label="Select Network"
@@ -87,10 +88,14 @@ export default function InputInfo() {
                   </Stack>
                 </MenuItem>
               </TextField>
-              <TextField label="Title" helperTex='* Give your collectible a name.' />
-              <TextField multiline rows={5} label="Description :" fullWidth helperText="* Describe your Collectible." />
-              <TextField label="Tags" helperTex='* Add tags to help the item get discovered on the explore and search page. You may add up to 10 tags. Add up to 10 tags.' />
               <TextField
+                inputProps={{ sx: { color: 'white' } }} label="Title" helperTex='* Give your collectible a name.' />
+              <TextField
+                inputProps={{ sx: { color: 'white' } }} multiline rows={5} label="Description :" fullWidth helperText="* Describe your Collectible." inputProps={{ sx: { color: 'white' } }} />
+              <TextField
+                inputProps={{ sx: { color: 'white' } }} label="Tags" helperTex='* Add tags to help the item get discovered on the explore and search page. You may add up to 10 tags. Add up to 10 tags.' />
+              <TextField
+                inputProps={{ sx: { color: 'white' } }}
                 label="Editions"
                 InputProps={{
                   endAdornment: (
@@ -99,11 +104,9 @@ export default function InputInfo() {
                     </InputAdornment>
                   )
                 }}
-                inputProps={{
-                  color: 'white'
-                }}
               />
               <TextField
+                inputProps={{ sx: { color: 'white' } }}
                 label="Royalties"
                 helperText="Royalties are optional and allow you to earn a percentage on secondary sales."
                 InputProps={{
@@ -112,9 +115,6 @@ export default function InputInfo() {
                       <Typography>%</Typography>
                     </InputAdornment>
                   )
-                }}
-                inputProps={{
-                  color: 'white'
                 }}
               />
               <Stack direction="row" justifyContent={'space-between'} alignItems="center">
@@ -141,16 +141,18 @@ export default function InputInfo() {
                   </RadioGroup>
                 </FormControl>
                 <Stack spacing={2}>
-                  <Typography variant="h7" sx={{textAlign: 'left'}}>Price</Typography>
+                  <Typography variant="h7" sx={{ textAlign: 'left' }}>Price</Typography>
 
                   <Stack direction="row" spacing={1} justifyContent="space-between">
                     <TextField
+                inputProps={{ sx: { color: 'white' } }}
                       id="outlined-select-token"
                       select
                       label="Select token"
                       value={token}
                       onChange={handleToken}
                       sx={{ color: 'white', width: '50%' }}
+
                       className={classes.textField}
                     >
                       <MenuItem value="BNB">
@@ -167,8 +169,9 @@ export default function InputInfo() {
                       </MenuItem>
                     </TextField>
                     <TextField
+                inputProps={{ sx: { color: 'white' } }}
                       label="price"
-                      sx={{width: '50%'}}
+                      sx={{ width: '50%' }}
                     />
                   </Stack>
                 </Stack>

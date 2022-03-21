@@ -28,6 +28,11 @@ const menuConfig = [
     title: 'Contact',
     path: '/contact',
     icon: <Icon icon={homeFill} {...ICON_SIZE} />
+  },
+  {
+    title: 'Create',
+    path: '/create',
+    icon: <Icon icon={homeFill} {...ICON_SIZE} />
   }
   // { title: 'Dashboard', path: PATH_DASHBOARD.root, icon: <Icon icon={fileFill} {...ICON_SIZE} /> }
 ];

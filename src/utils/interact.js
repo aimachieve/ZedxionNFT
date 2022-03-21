@@ -8,7 +8,7 @@ var Web3 = require("web3");
 // const web3 = createAlchemyWeb3("https://eth-rinkeby.alchemyapi.io/v2/ltxESp_ON7Y9IzajiJvXptVK0P3dNMrS");
 // const web3 = new Web3(new Web3.providers.HttpProvider( "https://rinkeby.infura.io/v3/aba36d08da514e4897c41d9063574996"));
 const contractABI = require("./zedxionContract.json");
-const contractAddress = "0x9787e5ca192ae9BE424F2C25527f5A8e898B3Ca0";
+const contractAddress = "0x9787e5ca192ae9BE424F2C25527f5A8e898B3Ca01";
 
 export const getWeb3 = async () => {
   return new Web3(window.web3.currentProvider);

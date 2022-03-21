@@ -43,18 +43,18 @@ export default function bANNER() {
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
               <Typography sx={{ color: 'white', fontSize: 50, textAlign: 'center', fontStyle: 'Poppins' }}>
-                Contact Us
+                Create
               </Typography>
               <Typography sx={{ color: 'rgba(255,255,255,.5)', fontSize: 25, textAlign: 'center', fontStyle: 'Poppins', }}>
-                Get in Touch!
+                Mint your NFT!
               </Typography>
               <Stack direction={'row'} spacing={1} alignItems="center" mt={15}>
                 <Typography sx={{ color: 'rgba(255,255,255,.5)', fontSize: 20, textAlign: 'center', fontStyle: 'Poppins', }}>
-                  ZEDXION
+                ZEDXION
                 </Typography>
                 <ChevronRightIcon sx={{color: 'rgba(255,255,255,.5)'}} />
                 <Typography sx={{ color: 'white', fontSize: 20, lineHeight: '90px', textAlign: 'center', fontStyle: 'Poppins', mt: 15 }}>
-                  CONTACT US
+                  CREATE
                 </Typography>
               </Stack>
             </motion.div>

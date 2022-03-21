@@ -109,6 +109,7 @@ export default function Router() {
         { path: '/blog', element: <Blog /> },
         { path: '/terms', element: <Terms /> },
         { path: '/privacy', element: <Privacy /> },
+        { path: '/create', element: <Create /> },
         // ZEDZION FOOTER
         { path: '/explore', element: <Explore /> },
         { path: '/auction', element: <Auction /> },
@@ -133,6 +134,7 @@ const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 // Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const BidPage = Loadable(lazy(() => import('../pages/Bid/index.js')));
+const Create = Loadable(lazy(() => import('../pages/Create/index.js')));
 // Footer Community
 const Contact = Loadable(lazy(() => import('../pages/Contact/index.js')));
 const AboutUs = Loadable(lazy(() => import('../pages/AboutUs/index.js')));

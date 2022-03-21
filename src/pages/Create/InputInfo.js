@@ -89,11 +89,15 @@ export default function InputInfo() {
                 </MenuItem>
               </TextField>
               <TextField
-                inputProps={{ sx: { color: 'white' } }} label="Title" helperTex='* Give your collectible a name.' />
+                inputProps={{ sx: { color: 'white' } }}
+                label="Title"
+                helperTex='* Give your collectible a name.' />
               <TextField
-                inputProps={{ sx: { color: 'white' } }} multiline rows={5} label="Description :" fullWidth helperText="* Describe your Collectible." inputProps={{ sx: { color: 'white' } }} />
+                inputProps={{ sx: { color: 'white' } }} multiline rows={5} label="Description :" fullWidth helperText="* Describe your Collectible." />
               <TextField
-                inputProps={{ sx: { color: 'white' } }} label="Tags" helperTex='* Add tags to help the item get discovered on the explore and search page. You may add up to 10 tags. Add up to 10 tags.' />
+                inputProps={{ sx: { color: 'white' } }}
+                label="Tags"
+                helperTex='* Add tags to help the item get discovered on the explore and search page. You may add up to 10 tags. Add up to 10 tags.' />
               <TextField
                 inputProps={{ sx: { color: 'white' } }}
                 label="Editions"
@@ -145,7 +149,7 @@ export default function InputInfo() {
 
                   <Stack direction="row" spacing={1} justifyContent="space-between">
                     <TextField
-                inputProps={{ sx: { color: 'white' } }}
+                      inputProps={{ sx: { color: 'white' } }}
                       id="outlined-select-token"
                       select
                       label="Select token"
@@ -169,7 +173,7 @@ export default function InputInfo() {
                       </MenuItem>
                     </TextField>
                     <TextField
-                inputProps={{ sx: { color: 'white' } }}
+                      inputProps={{ sx: { color: 'white' } }}
                       label="price"
                       sx={{ width: '50%' }}
                     />

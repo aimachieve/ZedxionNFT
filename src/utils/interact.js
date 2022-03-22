@@ -1,23 +1,34 @@
 require("dotenv").config();
-// const rinkebyKey = process.env.REACT_APP_ALCHEMY_RINKEY;
-// const mainnetKey = process.env.REACT_APP_ALCHEMY_MAINNET;
-// const testnetKey = process.env.REACT_APP_ALCHEMY_RINKEY;
-// const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 var Web3 = require("web3");
 
-// const web3 = createAlchemyWeb3("https://eth-rinkeby.alchemyapi.io/v2/ltxESp_ON7Y9IzajiJvXptVK0P3dNMrS");
-// const web3 = new Web3(new Web3.providers.HttpProvider( "https://rinkeby.infura.io/v3/aba36d08da514e4897c41d9063574996"));
-const contractABI = require("./zedxionContract.json");
-const contractAddress = "0x9787e5ca192ae9BE424F2C25527f5A8e898B3Ca01";
+const bscContractABI = require("./bscContract.json");
+const bscContractAddress = "0x88Dd8d513fE749C985e613233E03864dA6826408";
+const ethContractABI = require("./ethContract.json");
+const ethContractAddress = "0x88Dd8d513fE749C985e613233E03864dA6826408";
+const busdContractABI = require("./busdContract.json");
+const busdContractAddress = "0xB0D0eDB26B7728b97Ef6726dAc6FB7a43d6043E1";
 
 export const getWeb3 = async () => {
   return new Web3(window.web3.currentProvider);
 }
 
-
-export const getContract = async () => {
+export const getBSCContract = async () => {
   const web3 = await getWeb3()
-  const contract = new web3.eth.Contract(contractABI, contractAddress);
+  const contract = new web3.eth.Contract(bscContractABI, bscContractAddress);
+  // console.log("contract=>", contract)
+  return contract
+}
+
+export const getETHContract = async () => {
+  const web3 = await getWeb3()
+  const contract = new web3.eth.Contract(ethContractABI, ethContractAddress);
+  // console.log("contract=>", contract)
+  return contract
+}
+
+export const getBUSDContract = async () => {
+  const web3 = await getWeb3()
+  const contract = new web3.eth.Contract(busdContractABI, busdContractAddress);
   // console.log("contract=>", contract)
   return contract
 }

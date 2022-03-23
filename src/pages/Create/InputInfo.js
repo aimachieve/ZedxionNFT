@@ -173,7 +173,7 @@ export default function InputInfo() {
 
   const minting = async () => {
     console.log("metadata url=>", metadataUrl)
-    console.log("current account=>", account)
+    console.log("current walletAddress=>", walletAddress)
     console.log("metadata.price, pi=>", metaData.price, metaData.pi)
     console.log("metadata=>", metaData)
     console.log("number price=>", Number(metaData.price))
@@ -181,7 +181,7 @@ export default function InputInfo() {
     setMintButton("NFT is minting now...")
     try {
       const result = await BSCContract.mintNFT(
-        account,
+        walletAddress,
         metadataUrl,
         Number(metaData.price),
         Number(metaData.pi)
@@ -197,7 +197,7 @@ export default function InputInfo() {
     const checkMintingAllowance = async () => {
       try {
         const result = await BUSDContract.allowance(
-          account,
+          walletAddress,
           process.env.REACT_APP_NFT_CONTRACT_ADDRESS
         );
         const allowedBalance = ethers.utils.formatUnits(result);

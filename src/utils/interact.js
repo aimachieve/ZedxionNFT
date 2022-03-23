@@ -34,20 +34,10 @@ export const getBUSDContract = async () => {
 }
 
 export const getTotalSupply = async () => {
-  const zedxionContract = await getContract()
+  const zedxionContract = await getBSCContract()
   var totalSupply = await zedxionContract.methods.totalSupply().call();
   return totalSupply;
 };
-
-// export const loadTotalMintCount = async () => {
-//   var message = await zedxionContract.methods.totalMint().call();
-//   return message;
-// };
-
-// export const getCurrentMessage = async () => {
-//   var message = await zedxionContract.methods.message().call();
-//   return message;
-// };
 
 /** Connect to Metamask */
 export const connectWallet = async () => {

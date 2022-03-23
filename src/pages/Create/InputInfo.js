@@ -11,6 +11,8 @@ import FormControl from '@mui/material/FormControl';
 import { varFadeInUp, MotionInView } from '../../components/animate';
 import { create } from 'ipfs-http-client'
 import { connectWallet, getETHContract, getBSCContract, getBUSDContract, getCurrentWalletBalance } from "../../utils/interact"
+import {ethers} from 'ethers'
+import { useSnackbar } from "notistack";
 
 // ----------------------------------------------------------------------
 
@@ -39,7 +41,12 @@ const useStyles = makeStyles({
 
 export default function InputInfo() {
   const classes = useStyles();
+  const axios = require('axios');
 
+  const [network, setNetwork] = useState('bsc');
+  const [checked, setChecked] = useState(false);
+  const [radio, setRadio] = useState('fixed');
+  const [token, setToken] = useState('BNB');
   const [imageUrl, setImageUrl] = useState('')
   const [status, setStatus] = useState('Uploading Image To Pinata')
   const [disable, setDisable] = useState(true)
@@ -64,6 +71,7 @@ export default function InputInfo() {
   const [mintingApproved, setMintingApproved] = useState(false)
 
   const uploadImgRef = useRef(null);
+  const uploadMetadataRef = useRef(null);
   const client = create('https://ipfs.infura.io:5001/api/v0')
   const BSCContract = getBSCContract()
   const ETHContract = getETHContract()
@@ -81,6 +89,19 @@ export default function InputInfo() {
     setChainId(_chainId)
     console.log(_chainId)
   }, []);
+
+  const handleChange = (event) => {
+    setNetwork(event.target.value);
+  };
+  const handleChecked = (event) => {
+    setChecked(event.target.checked)
+  }
+  const handleRadio = (event) => {
+    setRadio(event.target.value);
+  };
+  const handleToken = (event) => {
+    setToken(event.target.value);
+  };
 
   const onClickUpload = () => {
     uploadImgRef.current.click();
@@ -109,7 +130,7 @@ export default function InputInfo() {
     if (metaData.name === "" || metaData.description === "" || metaData.price === 0 || metaData.royalty === 0 || imageUrl === "") {
       alert("Please fill all the fileds!")
     } else {
-      setMetadataButton("Uploading metadata...")
+      setMintButton("Uploading metadata...")
       const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
       console.log(process.env.REACT_APP_PINATA_KEY, process.env.REACT_APP_PINATA_SECRET)
       //making axios POST request to Pinata ⬇️
@@ -126,7 +147,7 @@ export default function InputInfo() {
         })
         .catch(function (error) {
           console.log("error:", error)
-          setMetadataButton("metadata upload fail ⬇️, try again later!", error.message);
+          setMintButton("metadata upload fail ⬇️, try again later!", error.message);
         });
     }
   }
@@ -152,7 +173,7 @@ export default function InputInfo() {
 
   const minting = async () => {
     console.log("metadata url=>", metadataUrl)
-    console.log("current account=>", walletAddress)
+    console.log("current account=>", account)
     console.log("metadata.price, pi=>", metaData.price, metaData.pi)
     console.log("metadata=>", metaData)
     console.log("number price=>", Number(metaData.price))
@@ -160,19 +181,13 @@ export default function InputInfo() {
     setMintButton("NFT is minting now...")
     try {
       const result = await BSCContract.mintNFT(
-        walletAddress,
+        account,
         metadataUrl,
         Number(metaData.price),
         Number(metaData.pi)
       )
-      enqueueSnackbar("WOW, One NFT was sucessufully minted!", {
-        variant: "success",
-      })
     } catch (error) {
       console.log("error: ", error)
-      enqueueSnackbar(MetamaskErrorMessage(error), {
-        variant: "error"
-      })
     }
 
     init()
@@ -182,8 +197,8 @@ export default function InputInfo() {
     const checkMintingAllowance = async () => {
       try {
         const result = await BUSDContract.allowance(
-          walletAddress,
-          process.env.REACT_APP_BSC_CONTRACT_ADDRESS
+          account,
+          process.env.REACT_APP_NFT_CONTRACT_ADDRESS
         );
         const allowedBalance = ethers.utils.formatUnits(result);
 
@@ -246,27 +261,27 @@ export default function InputInfo() {
               <TextField
                 inputProps={{ sx: { color: 'white' } }}
                 label="Title"
-                helperText='* Give your collectible a name.'
+                helperText='* Give your collectible a name.' 
                 value={metaData.name}
                 onChange={onMetaDataChange}
-              />
+                />
               <TextField
-                inputProps={{ sx: { color: 'white' } }}
-                multiline
-                rows={5}
-                label="Description :"
-                fullWidth
-                helperText="* Describe your Collectible."
+                inputProps={{ sx: { color: 'white' } }} 
+                multiline 
+                rows={5} 
+                label="Description :" 
+                fullWidth 
+                helperText="* Describe your Collectible." 
                 value={metaData.description}
                 onChange={onMetaDataChange}
-              />
+                />
               <TextField
                 inputProps={{ sx: { color: 'white' } }}
                 label="Tags"
-                helperText='* Add tags to help the item get discovered on the explore and search page. You may add up to 10 tags. Add up to 10 tags.'
+                helperTex='* Add tags to help the item get discovered on the explore and search page. You may add up to 10 tags. Add up to 10 tags.' 
                 value={metaData.tags}
                 onChange={onMetaDataChange}
-              />
+                />
               <TextField
                 inputProps={{ sx: { color: 'white' } }}
                 label="Editions"
@@ -321,10 +336,10 @@ export default function InputInfo() {
                 </FormControl>
               </Stack>
               <Stack spacing={2}>
-                <Typography
-                  variant="h6"
-                  type="number"
-                  sx={{ textAlign: 'left' }}
+                <Typography 
+                variant="h6" 
+                type="number" 
+                sx={{ textAlign: 'left' }}
                 >
                   Price
                 </Typography>
@@ -366,16 +381,7 @@ export default function InputInfo() {
                 <Link href="/terms">Terms of Service</Link> and
                 <Link href="/privacy">Privacy Policy</Link>.
               </Typography>
-              {
-                walletAddress ?
-                  <Button variant="contained" p="3" sx={{ color: "white" }} onClick={minting}>
-                    {mintButton}
-                  </Button> :
-                  <Button variant="contained" p="3" sx={{ color: "white" }} onClick={connectWallet} >
-                    Connect wallet
-                  </Button>
-              }
-              <Typography>{walletStatus}</Typography>
+              <Button variant="contained" p="3" sx={{ color: "white" }}>Agree & Continue </Button>
             </Stack>
           </MotionInView>
         </ContentStyle>

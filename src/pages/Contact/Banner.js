@@ -38,7 +38,7 @@ export default function bANNER() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <img alt="overlay" src="https://shreethemes.in/superex/layouts/images/bg/01.jpg" variants={varFadeIn} />
+        <image alt="overlay" src="https://shreethemes.in/superex/layouts/images/bg/01.jpg" variants={varFadeIn} />
         <Container maxWidth="lg">
           <ContentStyle>
             <motion.div variants={varFadeInRight}>

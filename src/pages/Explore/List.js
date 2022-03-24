@@ -45,17 +45,13 @@ export default function List() {
       // setTotalSupply(formatBigNumber(totalSupply))
       console.log("totlaSupply=>", formatBigNumber(totalSupply))
 
-      const data = []
-      for (var i = 1; i <= formatBigNumber(totalSupply); i++) {
-        const NFT = await NFTContract.getNFT(i)
-        console.log("Contract getNFT=>", NFT)
-        console.log([...NFT, i])
-        data.push([...NFT, i])
-      }
-
-      if (data.length > 0)
+      if (totalSupply > 0) {
+        let data = []
+        for (var i = 1; i <= formatBigNumber(totalSupply); i++) {
+          data.push(i)
+        }
         setNFTs(data)
-      console.log("NFTs state=>", NFTs)
+      }
     }
 
     init()
@@ -115,7 +111,7 @@ export default function List() {
               {
                 NFTs && NFTs.map((NFT, i) => (
                   <Grid item xs={12} md={3} key={i}>
-                    <Card NFT={NFT} />
+                    <Card tokenId={NFT} />
                   </Grid>
                 ))
               }

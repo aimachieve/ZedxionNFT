@@ -99,11 +99,12 @@ export default function Router() {
       ]
     },
     {
-      path: '/',
+      path: '/', 
       element: <MainLayout />,
       children: [
         { path: '/', element: <LandingPage /> },
         { path: '/bid/:id', element: <BidPage /> },
+        { path: '/item-details/:id', element: <ItemDetails /> },
         { path: '/contact', element: <Contact /> },
         { path: '/aboutus', element: <AboutUs /> },
         { path: '/blog', element: <Blog /> },
@@ -134,6 +135,7 @@ const NotFound = Loadable(lazy(() => import('../pages/Page404')));
 // Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const BidPage = Loadable(lazy(() => import('../pages/Bid/index.js')));
+const ItemDetails = Loadable(lazy(() => import('../pages/Explore/Item/index.js')));
 const Create = Loadable(lazy(() => import('../pages/Create/index.js')));
 // Footer Community
 const Contact = Loadable(lazy(() => import('../pages/Contact/index.js')));

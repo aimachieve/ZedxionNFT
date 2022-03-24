@@ -8,10 +8,13 @@ import './App.css';
 import ScrollToTop from './components/ScrollToTop';
 import NotistackProvider from './components/NotistackProvider';
 import ThemePrimaryColor from './components/ThemePrimaryColor';
+import useEagerConnect from "hooks/useEagerConnect";
 
 // ----------------------------------------------------------------------
 
 export default function App() {
+  useEagerConnect();
+  
   return (
     <ThemeConfig>
       <ThemePrimaryColor>

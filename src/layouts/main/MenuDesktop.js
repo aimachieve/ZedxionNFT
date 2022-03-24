@@ -9,12 +9,8 @@ import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 import { styled } from '@material-ui/core/styles';
 import { Box, Link, Grid, List, Stack, Popover, ListItem, ListSubheader, CardActionArea } from '@material-ui/core';
 import Avatar from '@mui/material/Avatar';
-import Fab from '@mui/material/Fab';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import SearchIcon from '@mui/icons-material/Search';
-// 
-import { connectWallet, getTotalSupply, getContract, getCurrentWalletBalance } from "../../utils/interact"
-
+import ConnectWalletButton from 'components/DappComponents/ConnectWalletButton';
 // ----------------------------------------------------------------------
 
 const LinkStyle = styled(Link)(({ theme }) => ({
@@ -220,39 +216,17 @@ MenuDesktop.propTypes = {
 export default function MenuDesktop({ isOffset, isHome, navConfig }) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState("")
-  const [chainId, setChainId] = useState(undefined);
-  const [balance, setBalance] = useState(0)
-  const [walletAddress, setWalletAddress] = useState("");
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    // Wallet connect
-    const result = await connectWallet();
-    setWalletAddress(result.address);
-    setStatus(result.status);
-
-    // Get Chain ID
-    const _chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    setChainId(_chainId)
-    console.log(_chainId)
-
-    const _balance = await getCurrentWalletBalance(result.address)
-    console.log("wallet balance:", _balance)
-    setBalance(_balance)
-  }, []);
+  console.log(process.env.REACT_APP_CHAIN_ID_TEST)
 
   useEffect(() => {
     if (open) {
       handleClose();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -271,21 +245,11 @@ export default function MenuDesktop({ isOffset, isHome, navConfig }) {
           isHome={isHome}
         />
       ))}
+      {/* Search part */}
       <SearchIcon sx={{ mr: 2, color: 'white', cursor: 'pointer' }} />
-      {
-        walletAddress.length > 0 ? (
-          <Fab color="primary" aria-label="add" sx={{ width: 'auto', height: '47px', mr: 2, p: 2 }} onClick={connectWallet}>
-            <AccountBalanceWalletIcon />
-            {String(walletAddress).substring(0, 6) +
-              '...' +
-              String(walletAddress).substring(38)}
-          </Fab>
-        ) : (
-          <Fab color="primary" aria-label="add" sx={{ width: '47px', height: '47px', mr: 2 }} onClick={connectWallet}>
-            <AccountBalanceWalletIcon />
-          </Fab>
-        )
-      }
+      {/* Connect wallet */}
+      <ConnectWalletButton />      
+      {/* User Avatar */}
       <Avatar src="/assets/home/avartar.jpg" alt="avartar" />
     </Stack>
   );

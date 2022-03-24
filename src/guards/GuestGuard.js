@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
 // hooks
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth1';
 // routes
 import { PATH_USER } from '../routes/paths';
 

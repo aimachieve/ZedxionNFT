@@ -13,7 +13,7 @@ import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
 
-// import useAuth from '../../hooks/useAuth';
+// import useAuth from '../../hooks/useAuth1';
 
 // ----------------------------------------------------------------------
 

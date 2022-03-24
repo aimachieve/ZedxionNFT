@@ -1,10 +1,9 @@
+import React, { useState, useEffect } from 'react'
 // material
 import { styled } from '@material-ui/core/styles';
 import { Container, Typography, Stack, Grid, Avatar, Button, Fab } from '@material-ui/core';
 //
 import { varFadeInUp, MotionInView } from '../../components/animate';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import LayersIcon from '@mui/icons-material/Layers';
 import SportsVolleyballIcon from '@mui/icons-material/SportsVolleyball';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -12,6 +11,10 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import AirlineStopsIcon from '@mui/icons-material/AirlineStops';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { useNFTContract } from 'hooks/useContract'
+// import { useWeb3React } from "@web3-react/core";
+import { formatBigNumber } from 'utils/formatNumber';
+import Card from './Card_Explore'
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +35,32 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function List() {
+  const NFTContract = useNFTContract(process.env.REACT_APP_NFT_CONTRACT_ADDRESS)
+  console.log("NFT COntract=>", NFTContract)
+  const [NFTs, setNFTs] = useState(null)
+
+  useEffect(() => {
+    const init = async () => {
+      const totalSupply = await NFTContract.totalSupply()
+      // setTotalSupply(formatBigNumber(totalSupply))
+      console.log("totlaSupply=>", formatBigNumber(totalSupply))
+
+      const data = []
+      for (var i = 1; i <= formatBigNumber(totalSupply); i++) {
+        const NFT = await NFTContract.getNFT(i)
+        console.log("Contract getNFT=>", NFT)
+        console.log([...NFT, i])
+        data.push([...NFT, i])
+      }
+
+      if (data.length > 0)
+        setNFTs(data)
+      console.log("NFTs state=>", NFTs)
+    }
+
+    init()
+  }, [])
+
   return (
     <RootStyle>
       <Container maxWidth="lg">
@@ -84,33 +113,9 @@ export default function List() {
               spacing={2}
             >
               {
-                [...Array(12)].map((value, index) => (
-                  <Grid item xs={12} md={3}>
-                    <Card sx={{ maxWidth: 345, background: '#010101', color: 'white' }}>
-                      {/* <Stack direction={'row'} alignItems="center" spacing={2} mb={3}>
-                        <Avatar src="https://shreethemes.in/superex/layouts/images/client/01.jpg"
-                          alt="avartar"
-                          sx={{ width: '40px', height: '40px' }}
-                        />
-                        <Typography sx={{ fontSize: '20px' }}>@Butterfly</Typography>
-                      </Stack> */}
-                      <CardMedia
-                        component="img"
-                        alt="green iguana"
-                        height="auto"
-                        image={`https://shreethemes.in/superex/layouts/images/items/${index + 1}.jpg`}
-                        sx={{ borderRadius: "10px" }}
-                      />
-                      <Stack sx={{ p: 3 }}>
-                        <Typography gutterBottom variant="h5" component="div" mt={3}>
-                          Liquid Forest Princess
-                        </Typography>
-                        <Stack direction={'row'} justifyContent="space-between">
-                          <Typography sx={{ color: "#1066e7" }}>20.5ETH</Typography>
-                          <Typography sx={{}}>1 out of 10</Typography>
-                        </Stack>
-                      </Stack>
-                    </Card>
+                NFTs && NFTs.map((NFT, i) => (
+                  <Grid item xs={12} md={3} key={i}>
+                    <Card NFT={NFT} />
                   </Grid>
                 ))
               }

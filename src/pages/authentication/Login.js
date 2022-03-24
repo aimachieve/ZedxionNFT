@@ -6,7 +6,7 @@ import { Box, Card, Stack, Link, Alert, Tooltip, Container, Typography, Button }
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth1';
 // layouts
 import AuthLayout from '../../layouts/AuthLayout';
 // components

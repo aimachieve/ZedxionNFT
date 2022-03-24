@@ -15,6 +15,7 @@ import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import { AuthProvider } from './contexts/JWTContext';
+import Providers from './Providers';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -24,19 +25,21 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <StrictMode>
-    <HelmetProvider>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SettingsProvider>
-          <CollapseDrawerProvider>
-            <BrowserRouter>
-              <AuthProvider>
-                <App />
-              </AuthProvider>
-            </BrowserRouter>
-          </CollapseDrawerProvider>
-        </SettingsProvider>
-      </LocalizationProvider>
-    </HelmetProvider>
+    <Providers>
+      <HelmetProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <CollapseDrawerProvider>
+              <BrowserRouter>
+                <AuthProvider>
+                  <App />
+                </AuthProvider>
+              </BrowserRouter>
+            </CollapseDrawerProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
+      </HelmetProvider>
+    </Providers>
   </StrictMode>,
   document.getElementById('root')
 );

@@ -112,6 +112,9 @@ export default function Card_Research({ NFT }) {
       />
       <Stack sx={{ p: 3 }}>
         <Typography gutterBottom variant="h5" component="div" mt={3}>
+          {data && data.name}
+        </Typography>
+        <Typography gutterBottom component="div">
           {data && data.description}
         </Typography>
         <Stack direction={'row'} justifyContent="space-between">

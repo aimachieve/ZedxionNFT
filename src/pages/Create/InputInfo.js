@@ -41,7 +41,7 @@ export default function InputInfo() {
 
   const [imageUrl, setImageUrl] = useState('')
   const [status, setStatus] = useState('Uploading Image To Pinata')
-  const [disable, setDisable] = useState(true)
+  const [disable, setDisable] = useState(false)
   const [metaData, setMetaData] = useState({
     'network': 'bsc',
     'image': '',
@@ -55,7 +55,7 @@ export default function InputInfo() {
     'price': 0,
     'symbol': 'BUSD'
   })
-  const [metadataUrl, setMetadataUrl] = useState('')
+  const [metadataUrl, setMetadataUrl] = useState(null)
   const [mintButton, setMintButton] = useState('Agree & Continue')
   const [mintingApproved, setMintingApproved] = useState(false)
 
@@ -71,8 +71,9 @@ export default function InputInfo() {
   async function onUpload(e, type) {
     const file = e.target.files[0];
     // pinFileToIPFS(file);
+    setStatus('uploading file...');
+    setDisable(true)
     try {
-      setStatus('uploading file...');
       const added = await client.add(file)
       console.log(added);
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
@@ -83,6 +84,7 @@ export default function InputInfo() {
     } catch (error) {
       console.log('Error uploading file: ', error)
     }
+    setDisable(false)
   }
   const onMetaDataChange = (e) => {
     setMetaData({ ...metaData, [e.target.name]: e.target.value });
@@ -147,6 +149,7 @@ export default function InputInfo() {
       })
     } else {
       setMintButton("Uploading metadata...")
+      setDisable(true)
       const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
       console.log(process.env.REACT_APP_PINATA_KEY, process.env.REACT_APP_PINATA_SECRET)
       //making axios POST request to Pinata ⬇️
@@ -159,20 +162,28 @@ export default function InputInfo() {
       })
         .then(function (response) {
           setMetadataUrl("https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash);
-          setMintButton("NFT is minting now...")
-          setDisable(false);
+
+          enqueueSnackbar("Metadata is sucessufully uploaded!", {
+            variant: "success",
+          })
+          setMintButton("Agree && Continue")
         })
         .catch(function (error) {
+          enqueueSnackbar("Metadata uploading failed!", {
+            variant: "error",
+          })
           console.log("error:", error)
           setMintButton("metadata upload fail ⬇️, try again later!", error.message);
         });
+
+      setDisable(false);
     }
   }
 
   const minting = async () => {
+    setMintButton("NFT is minting now...")
+    setDisable(true)
     try {
-      await uploadMetadata()
-
       await NFTContract.mintNFT(
         account,
         metadataUrl,
@@ -193,7 +204,6 @@ export default function InputInfo() {
   }
 
   const init = () => {
-    setDisable(true)
     setMetaData({
       'network': 'bsc',
       'image': '',
@@ -210,6 +220,7 @@ export default function InputInfo() {
     setImageUrl('')
     setStatus('Uploading Image To Pinata')
     setMintButton('Agree & Continue')
+    setDisable(false)
   }
 
   return (
@@ -230,6 +241,14 @@ export default function InputInfo() {
                   <Typography variant="h3" textAlign={'left'} mb={3}>
                     Mint your NFT!
                   </Typography>
+                  {/* Uploading image section */}
+                  <Stack alignItems="center" spacing={1}>
+                    <img src={imageUrl || '/assets/create/Placeholder.png'} width="70%" height="auto" alt="image" style={{ borderRadius: '10px' }} />
+                    <>
+                      <input type="file" ref={uploadImgRef} onChange={(e) => onUpload(e, "image")} hidden />
+                      <Button variant="contained" disabled={disable} onClick={() => onClickUpload()} sx={{ border: '1px solid black', color: 'white' }}>{status}</Button>
+                    </>
+                  </Stack>
                   {/* Select Network */}
                   <TextField
                     select
@@ -256,14 +275,7 @@ export default function InputInfo() {
                       </Stack>
                     </MenuItem>
                   </TextField>
-                  {/* Uploading image section */}
-                  <Stack alignItems="center" spacing={1}>
-                    <img src={imageUrl || '/assets/create/Placeholder.png'} width="70%" height="auto" alt="image" style={{ borderRadius: '10px' }} />
-                    <>
-                      <input type="file" ref={uploadImgRef} onChange={(e) => onUpload(e, "image")} hidden />
-                      <Button variant="contained" disabled={!disable} onClick={() => onClickUpload()} sx={{ border: '1px solid black', color: 'white' }}>{status}</Button>
-                    </>
-                  </Stack>
+                  {/* Title */}
                   <TextField
                     inputProps={{ sx: { color: 'white' } }}
                     label="Title"
@@ -397,9 +409,13 @@ export default function InputInfo() {
                   {
                     account ?
                       mintingApproved ?
-                        <Button variant="contained" p="3" sx={{ color: "white" }} onClick={minting}>
-                          {mintButton}
-                        </Button> :
+                        metadataUrl ?
+                          < Button variant="contained" p="3" sx={{ color: "white" }} onClick={minting} disabled={disable}>
+                            {mintButton}
+                          </Button> :
+                          < Button variant="contained" p="3" sx={{ color: "white" }} onClick={uploadMetadata} disabled={disable}>
+                            Upload metadata
+                          </Button> :
                         <Button variant="contained" p="3" sx={{ color: "white" }} onClick={handleMintingApprove}>
                           Approve
                         </Button> :
@@ -420,10 +436,10 @@ export default function InputInfo() {
                   sx={{ borderRadius: "10px" }}
                 />
                 <Stack sx={{ p: 3 }}>
-                  <Typography gutterBottom variant="h5" component="div" mt={2} sx={{textAlign: 'left'}}>
+                  <Typography gutterBottom variant="h5" component="div" mt={2} sx={{ textAlign: 'left' }}>
                     {metaData.name === '' ? "Name" : metaData.name}
                   </Typography>
-                  <Typography gutterBottom component="div" sx={{textAlign: 'left'}}>
+                  <Typography gutterBottom component="div" sx={{ textAlign: 'left' }}>
                     {metaData.description === '' ? "Description" : metaData.description}
                   </Typography>
                   <Stack direction={'row'} spacing={1}>
@@ -436,6 +452,6 @@ export default function InputInfo() {
           </Grid>
         </ContentStyle>
       </Container>
-    </RootStyle>
+    </RootStyle >
   );
 }

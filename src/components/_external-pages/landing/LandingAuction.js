@@ -61,7 +61,7 @@ export default function LandingAuction() {
                   </Stack>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/items/3.jpg"
                     sx={{ borderRadius: "10px" }}
@@ -91,7 +91,7 @@ export default function LandingAuction() {
                   </Stack>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/gif/3.gif"
                     sx={{ borderRadius: "10px" }}
@@ -121,7 +121,7 @@ export default function LandingAuction() {
                   </Stack>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/items/4.jpg"
                     sx={{ borderRadius: "10px" }}
@@ -151,7 +151,7 @@ export default function LandingAuction() {
                   </Stack>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/gif/4.gif"
                     sx={{ borderRadius: "10px" }}

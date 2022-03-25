@@ -30,6 +30,11 @@ const menuConfig = [
     icon: <Icon icon={homeFill} {...ICON_SIZE} />
   },
   {
+    title: 'My Assets',
+    path: '/my-assets',
+    icon: <Icon icon={homeFill} {...ICON_SIZE} />
+  },
+  {
     title: 'Create',
     path: '/create',
     icon: <Icon icon={homeFill} {...ICON_SIZE} />

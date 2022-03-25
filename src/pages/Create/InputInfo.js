@@ -39,7 +39,7 @@ export default function InputInfo() {
   const axios = require('axios');
   const { account } = useWeb3React();
 
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrl, setImageUrl] = useState(null)
   const [status, setStatus] = useState('Uploading Image To Pinata')
   const [disable, setDisable] = useState(false)
   const [metaData, setMetaData] = useState({
@@ -136,7 +136,7 @@ export default function InputInfo() {
   };
   const uploadMetadata = async () => {
     if (
-      imageUrl === "" ||
+      imageUrl === null ||
       metaData.name === "" ||
       metaData.tags === "" ||
       metaData.editions === 0 ||
@@ -214,10 +214,11 @@ export default function InputInfo() {
       'royalties': 0,
       'sale': false,
       'saleMethod': 'fixed',
+      'auctionDay': 1,
       'symbol': 'BUSD',
       'price': 0
     })
-    setImageUrl('')
+    setImageUrl(null)
     setStatus('Uploading Image To Pinata')
     setMintButton('Agree & Continue')
     setDisable(false)
@@ -248,7 +249,11 @@ export default function InputInfo() {
                       <input type="file" ref={uploadImgRef} onChange={(e) => onUpload(e, "image")} hidden />
                       <Button variant="contained" disabled={disable} onClick={() => onClickUpload()} sx={{ border: '1px solid black', color: 'white' }}>{status}</Button>
                     </>
+                    <Typography sx={{fontSize: '12px'}}>
+                      {imageUrl ?? imageUrl}
+                    </Typography>
                   </Stack>
+
                   {/* Select Network */}
                   <TextField
                     select
@@ -342,9 +347,12 @@ export default function InputInfo() {
                       inputProps={{ 'aria-label': 'controlled' }}
                     />
                   </Stack>
-                  <Stack spacing={2} sx={{
-                    display: !metaData.sale ? 'none' : ''
-                  }}>
+                  <Stack
+                    spacing={2}
+                    sx={{
+                      // display: !metaData.sale ? 'none' : ''
+                    }}
+                  >
                     <FormControl>
                       <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
@@ -357,6 +365,24 @@ export default function InputInfo() {
                         <FormControlLabel value="auction" control={<Radio />} label="Auction" />
                       </RadioGroup>
                     </FormControl>
+                    <TextField
+                      type="number"
+                      inputProps={{ sx: { color: 'white' } }}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <Typography>Days</Typography>
+                          </InputAdornment>
+                        )
+                      }}
+                      label="Auction Day"
+                      name="auctionDay"
+                      value={metaData.auctionDay}
+                      onChange={onMetaDataChange}
+                      sx={{
+                        display: metaData.saleMethod === 'fixed' ? 'none' : ''
+                      }}
+                    />
                   </Stack>
                   <Stack spacing={2}>
                     <Typography
@@ -423,6 +449,9 @@ export default function InputInfo() {
                         <ConnectWalletButton />
                       </Stack>
                   }
+                  <Typography sx={{fontSize: '12px'}}>
+                    {metadataUrl ?? metadataUrl}
+                  </Typography>
                 </Stack>
               </MotionInView>
             </Grid>
@@ -430,7 +459,7 @@ export default function InputInfo() {
               <Card sx={{ maxWidth: 345, background: '#010101', color: 'white' }}>
                 <CardMedia
                   component="img"
-                  alt="green iguana"
+                  alt="NFT"
                   height="auto"
                   image={imageUrl || '/assets/create/Placeholder.png'}
                   sx={{ borderRadius: "10px" }}

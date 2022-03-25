@@ -47,7 +47,7 @@ export default function List() {
                     <Card sx={{ maxWidth: 345, background: '#010101', color: 'white' }}>
                       <CardMedia
                         component="img"
-                        alt="green iguana"
+                        alt="NFT"
                         height="auto"
                         image={ 
                           index + 1 < 10 ?

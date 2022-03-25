@@ -57,7 +57,7 @@ export default function List() {
                       </Stack>
                       <CardMedia
                         component="img"
-                        alt="green iguana"
+                        alt="NFT"
                         height="auto"
                         image={`https://shreethemes.in/superex/layouts/images/items/${index + 1}.jpg`}
                         sx={{ borderRadius: "10px" }}

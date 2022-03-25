@@ -61,7 +61,7 @@ export default function LandingBlogs2() {
                 <Card sx={{ maxWidth: 345, background: '#010101', color: 'white' }}>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/blog/01.jpg"
                   />
@@ -97,7 +97,7 @@ export default function LandingBlogs2() {
                 <Card sx={{ maxWidth: 345, background: '#010101', color: 'white' }}>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/blog/02.jpg"
                   />
@@ -133,7 +133,7 @@ export default function LandingBlogs2() {
                 <Card sx={{ maxWidth: 345, background: '#010101', color: 'white' }}>
                   <CardMedia
                     component="img"
-                    alt="green iguana"
+                    alt="NFT"
                     height="auto"
                     image="https://shreethemes.in/superex/layouts/images/blog/03.jpg"
                   />

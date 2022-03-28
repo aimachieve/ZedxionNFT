@@ -102,18 +102,19 @@ export default function List() {
             <Grid
               container
               spacing={2}
-              justifyContent="center"
             >
               {
-                NFTs ?. length > 0 ?
+                NFTs?.length > 0 ?
                   NFTs.map((NFT, i) => (
                     <Grid item xs={12} md={3} key={i}>
                       <Card tokenId={formatBigNumber(NFT)} />
                     </Grid>
                   )) :
-                  <Typography variant="h2">
-                    You have no NFTs in your account.
-                  </Typography>
+                  <Stack justifyContent="center">
+                    <Typography variant="h2" sx={{textAlign: 'center'}}>
+                      You have no NFT in your account.
+                    </Typography>
+                  </Stack>
               }
             </Grid>
 

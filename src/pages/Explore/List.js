@@ -109,11 +109,15 @@ export default function List() {
               spacing={2}
             >
               {
-                NFTs && NFTs.map((NFT, i) => (
-                  <Grid item xs={12} md={3} key={i}>
-                    <Card tokenId={NFT} />
-                  </Grid>
-                ))
+                NFTs ?
+                  NFTs.map((NFT, i) => (
+                    <Grid item xs={12} md={3} key={i}>
+                      <Card tokenId={NFT} />
+                    </Grid>
+                  )) :
+                    <Typography variant="h3" alignItems={'center'}>
+                      There is no NFT to explore !
+                    </Typography>
               }
             </Grid>
 

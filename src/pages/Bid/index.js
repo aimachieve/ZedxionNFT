@@ -98,7 +98,7 @@ export default function BidPage() {
                     variant="contained"
                     startIcon={<ShoppingCartIcon />}
                   >
-                    Bid
+                    Buy Now
                   </Button>
                 </Stack>
                 {/* Dtails Tab */}

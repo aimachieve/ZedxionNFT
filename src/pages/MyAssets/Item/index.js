@@ -19,11 +19,11 @@ import Avatar from '@mui/material/Avatar';
 import SendIconButton from './SendIconButton'
 // Contract
 import { useTokenContract, useNFTContract } from 'hooks/useContract'
-import { useSnackbar } from "notistack";
 import { ethers } from "ethers";
+import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
+import { useSnackbar } from "notistack";
 import { useWeb3React } from "@web3-react/core";
 import ConnectWalletButton from 'components/DappComponents/ConnectWalletButton';
-import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
 
 // ----------------------------------------------------------------------
 

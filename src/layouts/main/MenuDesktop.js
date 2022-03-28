@@ -17,7 +17,7 @@ const LinkStyle = styled(Link)(({ theme }) => ({
   ...theme.typography.subtitle2,
   color: '#FFFFFF',
   fontFamily: 'Arvo',
-  marginRight: theme.spacing(8),
+  marginRight: theme.spacing(6),
   transition: theme.transitions.create('opacity', {
     duration: theme.transitions.duration.shortest
   }),

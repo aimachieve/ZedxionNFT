@@ -17,13 +17,17 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Avatar from '@mui/material/Avatar';
 import SendIconButton from './SendIconButton'
+import BidButton from './BidButton'
 // Contract
 import { useTokenContract, useNFTContract } from 'hooks/useContract'
 import { useSnackbar } from "notistack";
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core";
 import ConnectWalletButton from 'components/DappComponents/ConnectWalletButton';
+import CountDown from 'components/CountDown'
 import { MetamaskErrorMessage } from "utils/MetamaskErrorMessage";
+import { buildSearch } from 'emoji-mart/dist-es/utils/data';
+import { formatBigNumber } from 'utils/formatNumber';
 
 // ----------------------------------------------------------------------
 
@@ -45,6 +49,8 @@ export default function BidPage() {
 
   const [data, setData] = useState(null)
   const [value, setValue] = React.useState('1');
+  const [auctionDay, setAuctionDay] = useState(null)
+  const [bids, setBids] = useState(null)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -68,6 +74,13 @@ export default function BidPage() {
         .catch(err => {
           console.log("err =>", err)
         })
+
+      const bids = await NFTContract.getBid(tokenId)
+      console.log("bids=>", bids)
+      setBids(bids)
+
+      setAuctionDay(NFT[5])
+      console.log(NFT[5])
     }
 
     init()
@@ -93,8 +106,8 @@ export default function BidPage() {
         setMintingApproved(false);
       }
     };
-
-    checkMintingAllowance()
+    if (account)
+      checkMintingAllowance()
   }, [])
 
   const handleMintingApprove = async () => {
@@ -136,6 +149,21 @@ export default function BidPage() {
     }
   }
 
+  const bidAt = (_bidAt) => {
+    const distanceToNow = new Date() - new Date(_bidAt);
+
+    const getDays = Math.floor(distanceToNow / (1000 * 60 * 60 * 24));
+    const getHours = `0${Math.floor(
+      (distanceToNow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    )}`.slice(-2);
+
+    return (
+      <Typography sx={{ fontSize: '15px', color: "#b9c6d8" }}>
+        {`${getDays} days ${getHours} hours ago`}
+      </Typography>
+    )
+  }
+
   // Random component
   const Completionist = () => <span>You are good to go!</span>;
   // Renderer callback with condition
@@ -148,6 +176,12 @@ export default function BidPage() {
       return <span style={{ fontSize: "26px", fontWeight: 'bold' }}>{hours}:{minutes}:{seconds}</span>;
     }
   };
+
+  const info = {
+    id: tokenId,
+    price: data?.price,
+    symbol: data?.symbol
+  }
 
   return (
     <RootStyle>
@@ -184,22 +218,30 @@ export default function BidPage() {
                   }
                   <Stack spacing={1} sx={{ display: data?.saleMethod === 'fixed' ? 'none' : '' }}>
                     <Typography variant="h5"> Auction Ending In </Typography>
-                    <Countdown
-                      date={Date.now() + 5 * 10 ** 10}
-                      renderer={renderer}
-                    />
+                    {
+                      auctionDay ?
+                        <CountDown day={auctionDay} /> :
+                        ""
+                    }
                   </Stack>
                 </Stack>
                 {/* Button Group */}
                 <Stack direction={'row'} spacing={2}>
-                  <Button
-                    sx={{ width: 100, borderRadius: "20px", color: "white", width: "150px", p: 1.2, display: data?.saleMethod === 'fixed' ? 'none' : '' }}
-                    color="primary"
-                    variant="contained"
-                    startIcon={<GavelIcon />}
-                  >
-                    Bid
-                  </Button>
+                  <Stack style={{ display: data?.saleMethod === 'fixed' ? 'none' : '' }}>
+                    {
+                      auctionDay && new Date(auctionDay) > new Date() ?
+                        <BidButton tokenId={tokenId} info={info} /> :
+                        <Button
+                          sx={{ width: '100', borderRadius: "20px", color: "white", width: "150px", p: 1.2 }}
+                          color="primary"
+                          variant="contained"
+                          startIcon={<GavelIcon />}
+                          disabled={true}
+                        >
+                          Auction Ended
+                        </Button>
+                    }
+                  </Stack>
                   {
                     account ?
                       mintingApproved ? (
@@ -209,6 +251,7 @@ export default function BidPage() {
                           variant="contained"
                           startIcon={<ShoppingCartIcon />}
                           onClick={() => { buyNFT(tokenId, data?.price) }}
+                          disabled={data?.saleMethod === 'auction'}
                         >
                           Buy Now
                         </Button>
@@ -249,16 +292,28 @@ export default function BidPage() {
                     </TabPanel>
                     {/* Bids Tab */}
                     <TabPanel value="2">
-                      <Stack direction="row" spacing={2} mt={2}>
-                        <Avatar src="https://shreethemes.in/superex/layouts/images/client/01.jpg"
-                          alt="avartar"
-                          sx={{ width: '54px', height: 'auto' }}
-                        />
-                        <Stack >
-                          <Typography variant="h5">2 WETH by 0xe849fa28a...ea14</Typography>
-                          <Typography sx={{ fontSize: '15px', color: "#b9c6d8" }}>6 hours ago</Typography>
-                        </Stack>
-                      </Stack>
+                      {
+                        data?.saleMethod === 'auction' ?
+                          bids ?
+                            bids.map((bid, index) => (
+                              <Stack direction="row" spacing={2} mt={2} key={index}>
+                                <Avatar src="https://shreethemes.in/superex/layouts/images/client/01.jpg"
+                                  alt="avartar"
+                                  sx={{ width: '54px', height: 'auto' }}
+                                />
+                                <Stack >
+                                  <Typography variant="h5">
+                                    {`${bid[1]} BUSD by ${bid[0].slice(0, 5)}...${bid[0].slice(-5)}`}
+                                  </Typography>
+                                  {
+                                    bidAt(bid[2])
+                                  }
+                                </Stack>
+                              </Stack>
+                            )) :
+                            <Typography variant="h5">There is no bidder !</Typography> :
+                          <Typography variant="h5">It is a fixed sale method.</Typography>
+                      }
                     </TabPanel>
                     {/* Activity Tab */}
                     <TabPanel value="3">

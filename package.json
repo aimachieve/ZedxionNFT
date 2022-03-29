@@ -1,9 +1,9 @@
 {
   "name": "zedxion-cryptocurrency",
-  "author": "Victor",
+  "author": "David",
   "version": "1.1.0",
   "private": true,
-  "proxy": "https://108.61.158.141:5000",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
